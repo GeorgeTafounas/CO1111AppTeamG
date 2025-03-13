@@ -3,26 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Geolocation Example</title>
-    <script>
-        function getLocation() {
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(showPosition);
-            } else {
-                alert("Geolocation is not supported by this browser.");
-            }
-        }
-
-        function showPosition(position) {
-            document.getElementById("location").innerHTML =
-                "Latitude: " + position.coords.latitude +
-                "<br>Longitude: " + position.coords.longitude;
-        }
-    </script>
+    <title>Treasure Hunt Login</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<h2>Geolocation Example</h2>
-<button onclick="getLocation()">Get Location</button>
-<p id="location"></p>
+
+<div class="login-container">
+    <h1>Welcome to the Treasure Hunt</h1>
+    <form id="login-form">
+        <input type="text" id="name" placeholder="Name">
+        <input type="email" id="email" placeholder="Email">
+        <button id="login-button" type="submit">Login</button>
+        <div id="savedData"></div>
+    </form>
+    <p id="error-message"></p>
+    <div id="treasure-hunts-list"></div>
+    <div id="score-container">
+        <p>Loading your score...</p>
+    </div>
+
+
+    <script src="app.js"></script>
+
 </body>
 </html>

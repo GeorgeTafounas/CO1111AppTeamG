@@ -1,12 +1,17 @@
-body {
-    font-family: Arial, sans-serif;
+body, html {
     margin: 0;
     padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    color: #fff;
     display: flex;
     flex-direction: column;
     align-items: center;
-    background: linear-gradient(135deg, #1e3c72, #2a5298);
-    color: #fff;
+    justify-content: center;
+    min-height: 100vh;
 }
 
 header {
@@ -126,8 +131,6 @@ footer p {
     margin: 0;
 }
 
-/* play button */
-
 .play-now {
     display: block;
     width: 200px;
@@ -145,4 +148,158 @@ footer p {
 
 .play-now:hover {
     background-color: #e68900;
+}
+
+.container {
+    background: #FF9800;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    width: 380px;
+    max-width: 90%;
+}
+
+h2 {
+    color: #fff;
+    font-size: 22px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+label {
+    font-size: 14px;
+    font-weight: bold;
+    color: #fff;
+    display: block;
+    text-align: left;
+    margin-bottom: 5px;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #ffffff;
+    border-radius: 6px;
+    margin-bottom: 15px;
+    font-size: 16px;
+    background: rgba(255, 255, 255, 0.9);
+    box-sizing: border-box;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    background: #333;
+    border: none;
+    border-radius: 6px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: 0.3s;
+    margin-bottom: 10px;
+}
+
+button:hover {
+    background: #222;
+}
+
+#savedData {
+    margin-top: 10px;
+    font-size: 16px;
+    color: #fff;
+}
+
+#treasure-hunts-list {
+    margin-top: 20px;
+    width: 90%;
+    max-width: 800px;
+}
+
+.hunt-item {
+    padding: 15px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    transition: transform 0.3s ease;
+}
+
+.hunt-item:hover {
+    transform: scale(1.05);
+}
+
+.hunt-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.hunt-header h3 {
+    margin: 0;
+}
+
+.start-hunt-btn {
+    background-color: #ff9800;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.start-hunt-btn:hover {
+    background-color: #e68900;
+}
+
+button:focus {
+    outline: none;
+}
+
+#error-message {
+    color: red;
+    font-weight: bold;
+}
+
+
+
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 50px;
+    background-color: #f4f4f4;
+}
+.container {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+    display: inline-block;
+}
+h1 {
+    color: #28a745;
+}
+.play-again {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+#player-name {
+    color: black;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-top: 1rem;
+}
+#player-score {
+    color: black;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-top: 1rem;
 }

@@ -4,7 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Test API</title>
-    <script src="testAPI.js"></script>
+    <script>
+        function fetchAPI() {
+            fetch("https://codecyprus.org/th/api/question?session=ag9nfmNvZGVjeXBydXNvcmdyFAsSB1Nlc3Npb24YgICAoMa0gQoM")
+                .then(response => response.json())
+                .then(data => {
+                    document.body.innerHTML = "<pre>" + JSON.stringify(data, null, 2) + "</pre>";
+                })
+                .catch(error => {
+                    document.body.innerHTML = "<p>Error fetching" + error.message + "</p>";
+                });
+        }
+
+        window.onload = fetchAPI;
+    </script>
 </head>
 <body>
 </body>
