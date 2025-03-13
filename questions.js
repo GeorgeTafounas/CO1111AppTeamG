@@ -20,7 +20,6 @@ async function getCurrentQuestion() {
 
         displayQuestion(response);
     } else {
-        // If there are no more questions, redirect to the end screen
         alert("🎉 Congratulations! The treasure hunt is completed.");
         window.location.href = "endScreen.html";
     }
