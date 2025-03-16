@@ -32,8 +32,8 @@ async function fetchFinalScore() {
 }
 
 function restartHunt() {
-    document.cookie = "sessionId=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-    window.location.href = "index.html";
+    document.cookie = "sessionId=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+    window.location.href = "app.html";
 }
 
 fetchFinalScore();
