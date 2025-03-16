@@ -23,7 +23,6 @@ async function fetchFinalScore() {
     const data = await response.json();
 
     if (data.status === "OK") {
-        // No need to return to questions if the hunt is incomplete
         document.getElementById("player-name").innerText = `Player: ${data.player}`;
         document.getElementById("player-score").innerText = `Final Score: ${data.score}`;
     } else {
