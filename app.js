@@ -28,7 +28,7 @@ function saveUserData(event) {
         setCookie("username", name, 365);
         setCookie("useremail", email, 365);
 
-        // Create and set a unique session ID
+        // Create a unique session ID
         let sessionId = generateSessionId();
         setCookie("sessionId", sessionId, 365);
 
@@ -42,12 +42,12 @@ function saveUserData(event) {
     }
 }
 
-// Generate a random session ID
+// Generate random session ID
 function generateSessionId() {
     return 'session-' + Math.random().toString(36).slice(2);
 }
 
-// Function to populate the form with the last used credentials
+// Populate the form with the last used credentials
 function useLastCredentials() {
     let name = getCookie("username");
     let email = getCookie("useremail");
@@ -61,7 +61,6 @@ function useLastCredentials() {
     }
 }
 
-// Get the users location
 function getUserLocation() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(
@@ -88,14 +87,14 @@ async function fetchData(url) {
     }
 }
 
-// Function to retrieve the available treasure hunts
+// Retrieve the available treasure hunts
 async function getAvailableTreasureHunts(numberOfHunts = 10) {
     const url = `https://codecyprus.org/th/api/list`;
     const data = await fetchData(url);
     return data;
 }
 
-// Function to display available treasure hunts
+// Display available treasure hunts
 async function displayTreasureHunts() {
     const hunts = await getAvailableTreasureHunts();
     const huntsList = document.getElementById('treasure-hunts-list');
@@ -125,14 +124,14 @@ async function selectHunt(huntId) {
         return;
     }
 
-    // Add identifier to ensure the player name is unique
+    // Ensure the player name is unique
     playerName = playerName + "_" + new Date().getTime();
 
     setCookie("sessionId", "", -1);
 
     const appName = "TreasureHunt";
 
-    // Start the hunt with the unique player name
+    // Start the hunt
     const sessionId = await startTreasureHunt(playerName, appName, huntId);
     if (sessionId) {
         window.location.href = "questions.html";
