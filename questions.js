@@ -180,7 +180,6 @@ function skipQuestion(sessionId) {
 // Function to send the users current location to the server
 async function sendLocationUpdate(sessionId) {
     if (!navigator.geolocation) {
-        console.error("Geolocation is not supported.");
         return;
     }
 
