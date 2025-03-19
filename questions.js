@@ -43,7 +43,7 @@ async function checkLocation(sessionId, questionData) {
         return false;
     }
 
-    // Get the uses current location
+    // Get the users current location
     const userLocation = await new Promise((resolve, reject) => {
         navigator.geolocation.getCurrentPosition(
             (position) => resolve(position.coords),
@@ -86,6 +86,16 @@ function enableAnswerSubmission() {
         submitButton.innerText = "Submit Answer";
     }
 }
+// Enable or disable the submit button
+function monitorAnswerSelection() {
+    const submitButton = document.getElementById("submit-btn");
+    if (!submitButton) return;
+    submitButton.disabled = true;
+    document.getElementById("answer-container").addEventListener("input", () => {
+        submitButton.disabled = !document.querySelector('input[name="answer"]:checked, input[name="answer"]:not([type="radio"])');
+    });
+}
+
 
 // Function to display the current question
 function displayQuestion(questionData) {
@@ -137,6 +147,8 @@ function displayQuestion(questionData) {
     if (document.getElementById('skip-btn')) {
         document.getElementById('skip-btn').style.display = questionData.canBeSkipped ? 'block' : 'none';
     }
+    monitorAnswerSelection();
+
 }
 
 // Function to submit the answer

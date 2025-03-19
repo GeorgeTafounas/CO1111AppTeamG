@@ -18,27 +18,24 @@ function getCookie(name) {
     return "";
 }
 
-// Function to save the users data
+// Function to save the users name
 function saveUserData(event) {
     event.preventDefault();
-    let name = document.getElementById("name").value;
-    let email = document.getElementById("email").value;
+    let name = document.getElementById("name").value.trim();
 
-    if (name && email) {
+    if (name) {
         setCookie("username", name, 365);
-        setCookie("useremail", email, 365);
 
-        // Create a unique session ID
+        // Create a unique session id
         let sessionId = generateSessionId();
         setCookie("sessionId", sessionId, 365);
 
-        getUserLocation();
         displayTreasureHunts();
 
         document.getElementById("login-form").style.display = 'none';
         document.getElementById("treasure-hunts-list").style.display = 'block';
     } else {
-        alert("Please enter both name and email.");
+        alert("Please enter your name.");
     }
 }
 
@@ -47,32 +44,15 @@ function generateSessionId() {
     return 'session-' + Math.random().toString(36).slice(2);
 }
 
-// Populate the form with the last used credentials
+// Populate the form with the last used name
 function useLastCredentials() {
     let name = getCookie("username");
-    let email = getCookie("useremail");
 
-    if (name && email) {
+    if (name) {
         document.getElementById("name").value = name;
-        document.getElementById("email").value = email;
-        document.getElementById("savedData").innerText = "Loaded last used credentials.";
+        document.getElementById("savedData").innerText = "Loaded last used name.";
     } else {
-        alert("No saved credentials found.");
-    }
-}
-
-function getUserLocation() {
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(
-            function (position) {
-                const latitude = position.coords.latitude;
-                const longitude = position.coords.longitude;
-
-                checkLocationAnswer(latitude, longitude);
-            },
-        );
-    } else {
-        alert("Geolocation is not supported.");
+        alert("No saved name found.");
     }
 }
 
@@ -131,7 +111,6 @@ async function selectHunt(huntId) {
 
     const appName = "TreasureHunt";
 
-    // Start the hunt
     const sessionId = await startTreasureHunt(playerName, appName, huntId);
     if (sessionId) {
         window.location.href = "questions.html";
