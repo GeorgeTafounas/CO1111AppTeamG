@@ -65,7 +65,7 @@ async function checkLocation(sessionId, questionData) {
         requiredLocation.latitude, requiredLocation.longitude
     );
 
-    const allowedDistance = 10;
+    const allowedDistance = 5;
     return distance <= allowedDistance;
 }
 

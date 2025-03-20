@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function displayLeaderboard(leaderboard) {
     const container = document.getElementById('leaderboardContainer');
-    container.innerHTML = '';  // Clear previous results
+    container.innerHTML = '';
     const list = document.createElement('ol');
 
     leaderboard.forEach(entry => {
