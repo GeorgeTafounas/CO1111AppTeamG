@@ -116,6 +116,34 @@ async function selectHunt(huntId) {
         window.location.href = "questions.html";
     }
 }
+document.getElementById('showLeaderboardBtn').addEventListener('click', function() {
+    const sessionId = "ag9nfmNvZGVjeXBydXNvcmdyFAsSB1Nlc3Npb24YgICAotzxuwkM";
+    fetch(`https://codecyprus.org/th/api/leaderboard?session=${sessionId}&sorted&limit=10`)
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === 'OK') {
+                displayLeaderboard(data.leaderboard);
+            } else {
+                console.error('Error fetching leaderboard:', data.errorMessages);
+            }
+        })
+        .catch(error => console.error('Fetch error:', error));
+});
+
+function displayLeaderboard(leaderboard) {
+    const container = document.getElementById('leaderboardContainer');
+    container.innerHTML = '';  // Clear previous results
+    const list = document.createElement('ol');
+
+    leaderboard.forEach(entry => {
+        const listItem = document.createElement('li');
+        listItem.textContent = `${entry.player}: ${entry.score} points`;
+        list.appendChild(listItem);
+    });
+
+    container.appendChild(list);
+}
+
 
 async function startTreasureHunt(playerName, appName, huntId) {
     const url = `https://codecyprus.org/th/api/start?player=${playerName}&app=${appName}&treasure-hunt-id=${huntId}`;
