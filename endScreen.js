@@ -11,7 +11,7 @@ function getCookie(name) {
 }
 
 async function fetchFinalScore() {
-    const sessionId = getCookie("sessionId");
+    const sessionId = getCookie("sessionId");  // Get dynamic session ID
     if (!sessionId) {
         alert("No session found. Returning to main page.");
         window.location.href = "index.html";
@@ -32,11 +32,18 @@ async function fetchFinalScore() {
 }
 
 function restartHunt() {
-    document.cookie = "sessionId=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+    document.cookie = "sessionId=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";
     window.location.href = "app.html";
 }
+
 document.addEventListener('DOMContentLoaded', function() {
-    const sessionId = "ag9nfmNvZGVjeXBydXNvcmdyFAsSB1Nlc3Npb24YgICAotzxuwkM";
+    const sessionId = getCookie("sessionId");  // Use dynamic session ID
+    if (!sessionId) {
+        alert("No session ID found. Returning to main page.");
+        window.location.href = "index.html";
+        return;
+    }
+
     fetch(`https://codecyprus.org/th/api/leaderboard?session=${sessionId}&sorted&limit=10`)
         .then(response => response.json())
         .then(data => {
@@ -62,6 +69,10 @@ function displayLeaderboard(leaderboard) {
 
     container.appendChild(list);
 }
+
+// Call final score function on load
+fetchFinalScore();
+
 
 
 fetchFinalScore();
