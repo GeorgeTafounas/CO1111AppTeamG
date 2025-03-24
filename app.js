@@ -121,7 +121,6 @@ async function startTreasureHunt(playerName, appName, huntId) {
     }
 }
 
-// Show leaderboard (fetch session ID dynamically)
 document.getElementById('showLeaderboardBtn').addEventListener('click', function() {
     const sessionId = getCookie("sessionId");
 
@@ -184,7 +183,6 @@ function returnToIndex() {
     window.location.href = "index.html";
 }
 
-// Initialize event listeners
 document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("login-form")?.addEventListener("submit", saveUserData);
     document.getElementById("use-last-credentials")?.addEventListener("click", useLastCredentials);
