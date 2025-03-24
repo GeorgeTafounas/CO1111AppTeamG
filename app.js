@@ -26,7 +26,6 @@ function saveUserData(event) {
     if (name) {
         setCookie("username", name, 365);
 
-        // Only create a session ID when starting a hunt
         displayTreasureHunts();
 
         document.getElementById("login-form").style.display = 'none';
@@ -99,13 +98,13 @@ async function selectHunt(huntId) {
     // Ensure the player name is unique
     playerName = playerName + "_" + new Date().getTime();
 
-    setCookie("sessionId", "", -1); // Clear old session
+    setCookie("sessionId", "", -1);
 
     const appName = "TreasureHunt";
 
     const sessionId = await startTreasureHunt(playerName, appName, huntId);
     if (sessionId) {
-        window.location.href = "questions.html"; // Redirect to the game
+        window.location.href = "questions.html";
     }
 }
 
@@ -117,14 +116,14 @@ async function startTreasureHunt(playerName, appName, huntId) {
 
     if (response && response.status === "OK") {
         alert(`Hunt started! Number of Questions: ${response.numOfQuestions}`);
-        setCookie("sessionId", response.session, 365); // Store session ID dynamically
+        setCookie("sessionId", response.session, 365);
         return response.session;
     }
 }
 
 // Show leaderboard (fetch session ID dynamically)
 document.getElementById('showLeaderboardBtn').addEventListener('click', function() {
-    const sessionId = getCookie("sessionId"); // Get stored session ID
+    const sessionId = getCookie("sessionId");
 
     if (!sessionId) {
         alert("No session ID found. Start a hunt first.");
@@ -147,7 +146,7 @@ document.getElementById('showLeaderboardBtn').addEventListener('click', function
 // Display leaderboard results
 function displayLeaderboard(leaderboard) {
     const container = document.getElementById('leaderboardContainer');
-    container.innerHTML = '';  // Clear previous results
+    container.innerHTML = '';
     const list = document.createElement('ol');
 
     leaderboard.forEach(entry => {

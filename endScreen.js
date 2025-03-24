@@ -11,7 +11,7 @@ function getCookie(name) {
 }
 
 async function fetchFinalScore() {
-    const sessionId = getCookie("sessionId");  // Get dynamic session ID
+    const sessionId = getCookie("sessionId");
     if (!sessionId) {
         alert("No session found. Returning to main page.");
         window.location.href = "index.html";
@@ -37,7 +37,7 @@ function restartHunt() {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-    const sessionId = getCookie("sessionId");  // Use dynamic session ID
+    const sessionId = getCookie("sessionId");
     if (!sessionId) {
         alert("No session ID found. Returning to main page.");
         window.location.href = "index.html";
@@ -69,10 +69,5 @@ function displayLeaderboard(leaderboard) {
 
     container.appendChild(list);
 }
-
-// Call final score function on load
-fetchFinalScore();
-
-
 
 fetchFinalScore();

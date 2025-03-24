@@ -214,7 +214,6 @@ async function sendLocationUpdate(sessionId) {
     }
 }
 
-// Send updates every 30 secs
 function locationUpdates(sessionId) {
     const updateInterval = 10000;
 
