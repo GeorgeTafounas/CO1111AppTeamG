@@ -6,7 +6,7 @@
     <title>Test API</title>
     <script>
         function fetchAPI() {
-            fetch("https://codecyprus.org/th/api/question?session=ag9nfmNvZGVjeXBydXNvcmdyFAsSB1Nlc3Npb24YgICAoMa0gQoM")
+            fetch("https://codecyprus.org/th/api/list")
                 .then(response => response.json())
                 .then(data => {
                     document.body.innerHTML = "<pre>" + JSON.stringify(data, null, 2) + "</pre>";
