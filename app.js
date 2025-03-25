@@ -6,7 +6,7 @@ function setCookie(name, value, days) {
 }
 
 // Get cookie information
-function getCookie(name) {
+function getCookie(name){
     let decodedCookie = decodeURIComponent(document.cookie);
     let cookies = decodedCookie.split(';');
     for (let i = 0; i < cookies.length; i++) {
@@ -87,7 +87,7 @@ async function displayTreasureHunts() {
     }
 }
 
-// Select and start a hunt
+// Select hunt
 async function selectHunt(huntId) {
     let playerName = getCookie("username");
     if (!playerName) {

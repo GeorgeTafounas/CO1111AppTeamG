@@ -86,7 +86,6 @@ function enableAnswerSubmission() {
         submitButton.innerText = "Submit Answer";
     }
 }
-// Enable or disable the submit button
 function monitorAnswerSelection() {
     const submitButton = document.getElementById("submit-btn");
     if (!submitButton) return;
@@ -203,7 +202,6 @@ async function sendLocationUpdate(sessionId) {
         );
     });
 
-    // Send the location to the API
     const url = `https://codecyprus.org/th/api/location?session=${sessionId}&latitude=${userLocation.latitude}&longitude=${userLocation.longitude}`;
     const response = await fetchData(url);
 
