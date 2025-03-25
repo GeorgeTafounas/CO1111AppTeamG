@@ -166,13 +166,13 @@ async function submitAnswer(sessionId) {
 
     if (response && response.status === "OK") {
         if (response.correct) {
-            alert(`✅ Correct answer! Points won: ${response.scoreAdjustment}`);
+            alert(`Correct answer! Points won: ${response.scoreAdjustment}`);
         } else {
-            alert(`❌ Wrong answer! Points lost: ${response.scoreAdjustment}`);
+            alert(`Wrong answer! Points lost: ${response.scoreAdjustment}`);
         }
         getCurrentQuestion();
     } else {
-        alert("⚠️ Error submitting answer. Please try again.");
+        alert("Error submitting answer. Please try again.");
     }
 }
 
@@ -189,7 +189,7 @@ function skipQuestion(sessionId) {
     });
 }
 
-// Function to send the users current location to the server
+// Function to send the users current location to the API
 async function sendLocationUpdate(sessionId) {
     if (!navigator.geolocation) {
         return;
@@ -203,7 +203,7 @@ async function sendLocationUpdate(sessionId) {
         );
     });
 
-    // Send the location to the server
+    // Send the location to the API
     const url = `https://codecyprus.org/th/api/location?session=${sessionId}&latitude=${userLocation.latitude}&longitude=${userLocation.longitude}`;
     const response = await fetchData(url);
 
@@ -255,7 +255,6 @@ async function fetchData(url) {
         const response = await fetch(url);
         return await response.json();
     } catch (error) {
-        console.error("Error fetching data:", error);
         return null;
     }
 }
